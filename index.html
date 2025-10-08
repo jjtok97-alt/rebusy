@@ -95,17 +95,16 @@
       checkBtn.addEventListener('click', ()=>{
         const val = normalize(answerInput.value);
         const correct = normalize(r.answer);
-        if(val === correct && correct !== ''){
-          localStorage.setItem(solvedKey,'1');
-          feedback.classList.remove('hidden');
-          feedback.classList.add('solved');
-          feedback.innerHTML = `<strong>Dobra robota!</strong><div style='margin-top:8px'>${r.message}</div>`;
-        } else {
-          feedback.classList.remove('hidden');
-          feedback.classList.remove('solved');
-          feedback.innerHTML = 'Niepoprawna odpowiedź. Spróbuj ponownie.';
-        }
-      });
+     if(val === correct && correct !== ''){
+localStorage.setItem(solvedKey,'1');
+feedback.className = 'msg solved';
+feedback.innerHTML = `<strong>Dobra robota!</strong><div style='margin-top:8px'>${r.message}</div>`;
+} else {
+feedback.className = 'msg error';
+feedback.innerHTML = '❌ Niepoprawna odpowiedź. Spróbuj ponownie.';
+}
+feedback.classList.remove('hidden');
+});
 
       answerInput.addEventListener('keydown', e=>{ if(e.key === 'Enter') checkBtn.click(); });
     }
