@@ -45,7 +45,6 @@ const rebuses = [
   {id: 'r6', title: 'Rebus 6', image: 'images/rebus6.png', answer: 'SZOSTY', message: 'Tekst dla rebusu 6.'}
 ];
 
-
 function placeholderSVG(title){
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400'>
     <rect width='100%' height='100%' fill='%23f1f5f9' rx='14' />
@@ -95,9 +94,11 @@ function renderRebus(id){
   });
 }
 
-// Wyświetl pierwszy rebus po załadowaniu
+// Pobierz ID rebusu z URL (?rebus=r3)
 document.addEventListener('DOMContentLoaded', () => {
-  renderRebus('r1');
+  const params = new URLSearchParams(window.location.search);
+  const rebusId = params.get('rebus') || 'r1';
+  renderRebus(rebusId);
 });
 </script>
 </body>
