@@ -1,117 +1,84 @@
 <!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rebus</title>
-  <style>
-    :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;}
-    body{margin:0;padding:24px;background:#f7f7fb;color:#111}
-    .container{max-width:820px;margin:0 auto;background:#fff;padding:20px;border-radius:12px;box-shadow:0 6px 30px rgba(20,20,60,0.06)}
-    h1{margin-top:0;font-size:20px}
-    .card{padding:12px;border-radius:10px;border:1px solid #eee;background:linear-gradient(180deg,#fff,#fbfdff)}
-    img{max-width:100%;height:auto;border-radius:6px;border:1px solid #ddd}
-    label{display:block;margin-top:12px;font-weight:600}
-    input[type=text]{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ccc;font-size:16px}
-    button{margin-top:10px;padding:10px 14px;border-radius:9px;border:0;background:#2563eb;color:white;font-weight:600;cursor:pointer}
-    .msg{margin-top:12px;padding:10px;border-radius:8px;background:#eefaf0;border:1px solid #d6f4db}
-    .hidden{display:none}
-    .solved{background:#ecfeff;border-color:#c8f7fa}
-    .error {background:#fee2e2; border: 1px solid #fecaca; color: #b91c1c;}
-    footer{margin-top:16px;color:#475569;font-size:13px}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rebus</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;}
+body{margin:0;padding:24px;background:#f7f7fb;color:#111}
+.container{max-width:820px;margin:0 auto;background:#fff;padding:20px;border-radius:12px;box-shadow:0 6px 30px rgba(20,20,60,0.06)}
+h1{margin-top:0;font-size:20px}
+.card{padding:12px;border-radius:10px;border:1px solid #eee;background:linear-gradient(180deg,#fff,#fbfdff)}
+img{max-width:100%;height:auto;border-radius:6px;border:1px solid #ddd}
+label{display:block;margin-top:12px;font-weight:600}
+input[type=text]{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ccc;font-size:16px}
+button{margin-top:10px;padding:10px 14px;border-radius:9px;border:0;background:#2563eb;color:white;font-weight:600;cursor:pointer}
+.msg{margin-top:12px;padding:10px;border-radius:8px}
+.hidden{display:none}
+.solved{background:#ecfeff;border:1px solid #c8f7fa;color:#065f46}
+.error{background:#fee2e2;border:1px solid #fecaca;color:#b91c1c}
+footer{margin-top:16px;color:#475569;font-size:13px}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Rebus</h1>
+<div class="container">
+<h1>Rebus</h1>
 
-    <main id="main"></main>
 
-    <footer>
-      Edytuj tablicę <code>rebuses</code> w kodzie, aby podmienić obrazki, odpowiedzi i wyświetlane teksty.
-    </footer>
-  </div>
+<main id="main"></main>
 
-  <script>
-    // ------------------------------
-    // KONFIGURACJA: tutaj podaj swoje rebusy
-    // Każdy obiekt: { id: 'r1', title: 'Rebus 1', image: 'images/rebus1.png', answer: 'kot', message: 'Twój tekst do pokazania' }
-    // ------------------------------
 
-    const rebuses = [
-      {id: 'r1', title: 'Rebus 1', image: 'images/rebus1.png', answer: 'PRZYKŁAD', message: 'To jest Twój tekst wyświetlony po rozwiązaniu rebusu 1.'},
-      {id: 'r2', title: 'Rebus 2', image: 'images/rebus2.png', answer: 'DRUGI', message: 'Tekst dla rebusu 2.'},
-      {id: 'r3', title: 'Rebus 3', image: 'images/rebus3.png', answer: 'TRZECI', message: 'Tekst dla rebusu 3.'},
-      {id: 'r4', title: 'Rebus 4', image: 'images/rebus4.png', answer: 'CZWARTY', message: 'Tekst dla rebusu 4.'},
-      {id: 'r5', title: 'Rebus 5', image: 'images/rebus5.png', answer: 'PIATY', message: 'Tekst dla rebusu 5.'},
-      {id: 'r6', title: 'Rebus 6', image: 'images/rebus6.png', answer: 'SZOSTY', message: 'Tekst dla rebusu 6.'}
-    ];
+<footer>
+Edytuj tablicę <code>rebuses</code> w kodzie, aby podmienić obrazki, odpowiedzi i wyświetlane teksty.
+</footer>
+</div>
 
-    // Funkcja do tworzenia placeholdera SVG
-    function placeholderSVG(title){
-      const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400'>
-        <rect width='100%' height='100%' fill='%23f1f5f9' rx='14' />
-        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='28' fill='%235a6572'>${title}</text>
-      </svg>`;
-      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-    }
 
-    const main = document.getElementById('main');
+<script>
+const rebuses = [
+{id: 'r1', title: 'Rebus 1', image: '', answer: 'PRZYKŁAD', message: 'To jest Twój tekst wyświetlony po rozwiązaniu rebusu 1.'},
+{id: 'r2', title: 'Rebus 2', image: '', answer: 'DRUGI', message: 'Tekst dla rebusu 2.'},
+{id: 'r3', title: 'Rebus 3', image: '', answer: 'TRZECI', message: 'Tekst dla rebusu 3.'},
+{id: 'r4', title: 'Rebus 4', image: '', answer: 'CZWARTY', message: 'Tekst dla rebusu 4.'},
+{id: 'r5', title: 'Rebus 5', image: '', answer: 'PIATY', message: 'Tekst dla rebusu 5.'},
+{id: 'r6', title: 'Rebus 6', image: '', answer: 'SZOSTY', message: 'Tekst dla rebusu 6.'}
+];
 
-    function normalize(s){
-      if(!s) return '';
-      const map = {'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ż':'z','ź':'z','Ą':'A','Ć':'C','Ę':'E','Ł':'L','Ń':'N','Ó':'O','Ś':'S','Ż':'Z','Ź':'Z'};
-      s = s.trim().toLowerCase();
-      s = s.split('').map(ch => map[ch]||ch).join('');
-      return s;
-    }
 
-    function renderRebus(id){
-      const r = rebuses.find(x => x.id === id) || rebuses[0];
-      const solvedKey = `rebus_solved_${r.id}`;
-      const solved = localStorage.getItem(solvedKey) === '1';
-
-      main.innerHTML = `
-        <div class="card">
-          <img src="${r.image || placeholderSVG(r.title)}" alt="${r.title}" />
-          <h3>${r.title}</h3>
-          <label for="answer">Wpisz rozwiązanie</label>
-          <input id="answer" type="text" placeholder="Twoja odpowiedź..." />
-          <button id="checkBtn">Sprawdź</button>
-          <div id="feedback" class="msg hidden"></div>
-        </div>
-      `;
-
-      const answerInput = document.getElementById('answer');
-      const checkBtn = document.getElementById('checkBtn');
-      const feedback = document.getElementById('feedback');
-
-      if(solved){
-        feedback.classList.remove('hidden');
-        feedback.classList.add('solved');
-        feedback.innerHTML = `<strong>Już rozwiązane —</strong> ${r.message}`;
-      }
-
-      checkBtn.addEventListener('click', ()=>{
-        const val = normalize(answerInput.value);
-        const correct = normalize(r.answer);
-     if(val === correct && correct !== ''){
-localStorage.setItem(solvedKey,'1');
-feedback.className = 'msg solved';
-feedback.innerHTML = `<strong>Dobra robota!</strong><div style='margin-top:8px'>${r.message}</div>`;
-} else {
-feedback.className = 'msg error';
-feedback.innerHTML = '❌ Niepoprawna odpowiedź. Spróbuj ponownie.';
+function placeholderSVG(title){
+const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400'>
+<rect width='100%' height='100%' fill='%23f1f5f9' rx='14' />
+<text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='28' fill='%235a6572'>${title}</text>
+</svg>`;
+return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
-feedback.classList.remove('hidden');
-});
 
-      answerInput.addEventListener('keydown', e=>{ if(e.key === 'Enter') checkBtn.click(); });
-    }
 
-    // Wczytaj rebus na podstawie adresu (bez możliwości zmiany z poziomu strony)
-    const id = location.hash.replace('#','') || 'r1';
-    renderRebus(id);
-  </script>
-</body>
-</html>
+const main = document.getElementById('main');
+
+
+function normalize(s){
+if(!s) return '';
+const map = {'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ż':'z','ź':'z','Ą':'A','Ć':'C','Ę':'E','Ł':'L','Ń':'N','Ó':'O','Ś':'S','Ż':'Z','Ź':'Z'};
+s = s.trim().toLowerCase();
+s = s.split('').map(ch => map[ch]||ch).join('');
+return s;
+}
+
+
+function renderRebus(id){
+const r = rebuses.find(x => x.id === id) || rebuses[0];
+const solvedKey = `rebus_solved_${r.id}`;
+const solved = localStorage.getItem(solvedKey) === '1';
+
+
+main.innerHTML = `
+<div class="card">
+<img src="${r.image || placeholderSVG(r.title)}" alt="${r.title}" />
+<h3>${r.title}</h3>
+<label for="answer">Wpisz rozwiązanie</label>
+<input id="answer" type="text" placeholder="Twoja odpowiedź..." />
+<button id="checkBtn">Sprawdź</button>
+<div id="feedback" class="msg hidden"></div>
+</div>
