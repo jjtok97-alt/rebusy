@@ -6,9 +6,9 @@
 <title>🎄 Świąteczne Rebusy 🎅</title>
 <style>
 :root {
-  --bg1: #c21807;
+  --bg1: #b31217;
   --bg2: #1b5e20;
-  --card-bg: rgba(255 255 255 / 0.15);
+  --card-bg: rgba(255 255 255 / 0.18);
   --accent: #f9d342;
 }
 * { box-sizing: border-box; }
@@ -20,31 +20,30 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 16px;
+  padding: 40px 20px;
   min-height: 100vh;
   margin: 0;
 }
 
 h1 {
   text-align: center;
-  text-shadow: 2px 2px 4px #000;
-  margin-bottom: 24px;
-  font-size: clamp(1.4rem, 4vw, 2rem);
+  text-shadow: 3px 3px 6px #000;
+  margin-bottom: 36px;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
 }
 
-/* karta rebusu */
 .card {
   background: var(--card-bg);
   border: 2px solid rgba(255 255 255 / 0.4);
-  border-radius: 14px;
-  box-shadow: 0 0 18px rgba(0,0,0,0.45);
-  max-width: 480px;
+  border-radius: 20px;
+  box-shadow: 0 0 22px rgba(0,0,0,0.5);
+  max-width: 640px;
   width: 100%;
-  padding: clamp(16px, 4vw, 24px);
+  padding: clamp(24px, 5vw, 40px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   text-align: center;
   transition: all 0.4s ease;
 }
@@ -52,89 +51,88 @@ h1 {
 .card img {
   width: 100%;
   height: auto;
-  border-radius: 10px;
-  border: 2px solid rgba(255 255 255 / 0.4);
+  border-radius: 14px;
+  border: 3px solid rgba(255 255 255 / 0.5);
   background: rgba(255 255 255 / 0.1);
+  max-height: 480px;
+  object-fit: contain;
 }
 
 h3 {
   margin: 10px 0 4px;
-  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
 }
 
 label {
   font-weight: bold;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-size: clamp(1.1rem, 2.8vw, 1.3rem);
 }
 
 input[type=text] {
   width: 100%;
-  padding: 10px;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  border-radius: 8px;
+  padding: 14px;
+  font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+  border-radius: 10px;
   border: none;
   outline: none;
   text-transform: uppercase;
   text-align: center;
+  background: rgba(255 255 255 / 0.9);
+  color: #222;
 }
 
 button {
   background: var(--accent);
   color: var(--bg2);
-  font-weight: 700;
-  padding: 10px 18px;
-  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-  border-radius: 10px;
+  font-weight: 800;
+  padding: 14px 22px;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  border-radius: 12px;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(249, 211, 66, 0.6);
+  transform: scale(1.08);
+  box-shadow: 0 0 14px rgba(249, 211, 66, 0.8);
 }
 
 .msg {
-  margin-top: 12px;
-  padding: 10px;
-  border-radius: 8px;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 10px;
   width: 100%;
   text-align: center;
-  font-weight: 600;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-weight: 700;
+  font-size: clamp(1rem, 2.8vw, 1.3rem);
 }
 
 .hidden { display: none; }
 
 .solved {
-  background: rgba(255 255 255 / 0.25);
-  border: 1px solid rgba(255 255 255 / 0.45);
+  background: rgba(255 255 255 / 0.3);
+  border: 2px solid rgba(255 255 255 / 0.45);
   color: #fff;
 }
 
 .error {
-  background: rgba(255 0 0 / 0.25);
-  border: 1px solid rgba(255 255 255 / 0.45);
+  background: rgba(255 0 0 / 0.35);
+  border: 2px solid rgba(255 255 255 / 0.45);
   color: #fff;
 }
 
 footer {
-  margin-top: 24px;
-  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  margin-top: 30px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   text-shadow: 1px 1px 2px #000;
   color: rgba(255 255 255 / 0.8);
   text-align: center;
 }
 
-/* Ulepszenie wyglądu na małych ekranach */
 @media (max-width: 480px) {
-  body {
-    padding: 16px;
-  }
-  .card {
-    padding: 16px;
-  }
+  body { padding: 20px; }
+  .card { padding: 20px; }
 }
 </style>
 </head>
@@ -159,7 +157,7 @@ const main = document.getElementById('main');
 function placeholderSVG(title){
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400'>
     <rect width='100%' height='100%' fill='%23f1f5f9' rx='14'/>
-    <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='28' fill='%235a6572'>${title}</text>
+    <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='32' fill='%235a6572'>${title}</text>
   </svg>`;
   return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
@@ -177,8 +175,8 @@ function renderRebus(index){
   if(!r){
     main.innerHTML = `
       <div class="card">
-        <h2 style="font-size:clamp(1.3rem,4vw,1.6rem); text-shadow:2px 2px 4px #000;">🎉 Gratulacje! 🎉</h2>
-        <p style="font-size:clamp(1rem,3vw,1.2rem);">Ukończyłeś wszystkie rebusy z tej strony!</p>
+        <h2 style="font-size:clamp(1.6rem,5vw,2rem); text-shadow:2px 2px 4px #000;">🎉 Gratulacje! 🎉</h2>
+        <p style="font-size:clamp(1.2rem,3.5vw,1.5rem); margin-top:10px;">Ukończyłeś wszystkie rebusy z tej strony!</p>
       </div>
     `;
     return;
@@ -207,7 +205,7 @@ function renderRebus(index){
       setTimeout(() => {
         current++;
         renderRebus(current);
-      }, 1500);
+      }, 1700);
     } else {
       feedback.textContent = '❌ Źle, spróbuj ponownie!';
       feedback.className = 'msg error';
@@ -215,7 +213,6 @@ function renderRebus(index){
   });
 }
 
-// Start
 document.addEventListener('DOMContentLoaded', () => {
   renderRebus(current);
 });
