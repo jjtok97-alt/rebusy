@@ -145,7 +145,7 @@ footer {
 <script>
 const rebuses = [
   { id: 'r1', title: 'Rebus 1/2', image: 'images/rebus1.png', answer: 'PIERNIK', message: '🎉 Brawo! Pierwszy rebus rozwiązany!' },
-  { id: 'r2', title: 'Rebus 2/2', image: 'images/rebus2.png', answer: 'CHOINKA', message: '🎄 Świetnie! Ukończyłeś wszystkie rebusy z tej strony!' }
+  { id: 'r2', title: 'Rebus 2/2', image: 'images/rebus2.png', answer: 'CHOINKA', message: '🎄 Świetnie! Rozwiązałeś wszystkie rebusy!!' }
 ];
 
 let current = 0;
@@ -173,7 +173,7 @@ function renderRebus(index){
     main.innerHTML = `
       <div class="card">
         <h2 style="font-size:clamp(1.6rem,5vw,2rem); text-shadow:2px 2px 4px #000;">🎉 Gratulacje! 🎉</h2>
-        <p style="font-size:clamp(1.2rem,3.5vw,1.5rem); margin-top:10px;">Ukończyłeś wszystkie rebusy z tej strony!</p>
+        <p style="font-size:clamp(1.2rem,3.5vw,1.5rem); margin-top:10px;">Sprawdź co kryje się kryje za monsterą !</p>
       </div>
     `;
     return;
