@@ -141,7 +141,6 @@ footer {
 
 <main id="main"></main>
 
-
 <script>
 const rebuses = [
   { id: 'r1', title: 'Rebus 1/2', image: 'images/rebus1.png', answer: 'PIERNIK', message: '🎉 Brawo! Pierwszy rebus rozwiązany!' },
@@ -173,7 +172,7 @@ function renderRebus(index){
     main.innerHTML = `
       <div class="card">
         <h2 style="font-size:clamp(1.6rem,5vw,2rem); text-shadow:2px 2px 4px #000;">🎉 Gratulacje! 🎉</h2>
-        <p style="font-size:clamp(1.2rem,3.5vw,1.5rem); margin-top:10px;">Sprawdź co kryje się kryje za monsterą !</p>
+        <p style="font-size:clamp(1.2rem,3.5vw,1.5rem); margin-top:10px;">Sprawdź co kryje się za monsterą!</p>
       </div>
     `;
     return;
@@ -194,9 +193,9 @@ function renderRebus(index){
   const feedback = document.getElementById('feedback');
   const btn = document.getElementById('checkBtn');
 
-  btn.addEventListener('click', () => {
+  function checkAnswer() {
     const val = normalize(answerInput.value);
-    if(val === normalize(r.answer)){
+    if (val === normalize(r.answer)) {
       feedback.textContent = r.message;
       feedback.className = 'msg solved';
       setTimeout(() => {
@@ -206,6 +205,16 @@ function renderRebus(index){
     } else {
       feedback.textContent = '❌ Źle, spróbuj ponownie!';
       feedback.className = 'msg error';
+    }
+  }
+
+  // kliknięcie przycisku
+  btn.addEventListener('click', checkAnswer);
+
+  // naciśnięcie Entera w polu
+  answerInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      checkAnswer();
     }
   });
 }
